@@ -2,8 +2,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:csr_design_system/csr_design_system.dart';
 
-class AppBarGuestWidget extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarGuestWidget({
+class CsrAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CsrAppBar({
     Key? key,
     this.title,
     this.actions,
