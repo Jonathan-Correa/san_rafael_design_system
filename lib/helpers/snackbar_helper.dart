@@ -20,7 +20,13 @@ void csrErrorSnackBar(
   int duration = 10,
 ]) {
   ScaffoldMessenger.of(context).hideCurrentSnackBar();
-  csrSnackBar(context, message, Theme.of(context).errorColor, icon, duration);
+  csrSnackBar(
+    context,
+    message,
+    Theme.of(context).colorScheme.error,
+    icon,
+    duration,
+  );
 }
 
 void csrSnackBar(

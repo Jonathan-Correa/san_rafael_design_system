@@ -6,9 +6,6 @@ import '/helpers/responsive_helper.dart';
 
 class CsrConstants {
   // iniciar las variables globales
-  static const colombiaId = 47;
-  static const pereiraId = 13358;
-  static int selectPageGuest = 0;
   static final circularBorder = BorderRadius.circular(8.0);
   static final circularBorderN = BorderRadius.circular(42.0);
   static final btnBorder = BorderRadius.circular(17.0);
@@ -35,9 +32,6 @@ class CsrConstants {
   static const sizeBox8 = SizedBox(height: 8.0);
   static const sizeWBox8 = SizedBox(width: 8.0);
   static const sizeWBox20 = SizedBox(width: 20.0);
-
-  // Sedes map
-  static const mapZoom = 18.85;
 
   // Input height
   static double inputHeight(BuildContext context) {

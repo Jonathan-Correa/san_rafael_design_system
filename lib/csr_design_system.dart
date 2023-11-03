@@ -18,26 +18,24 @@ class CsrDesign {
     const backgroundColor = Colors.white;
 
     return light.copyWith(
-      errorColor: Colors.red,
       cardColor: Colors.white,
       primaryColor: primaryColor,
-      backgroundColor: Colors.white,
       canvasColor: Colors.transparent,
       dialogBackgroundColor: backgroundColor,
       scaffoldBackgroundColor: backgroundColor,
       shadowColor: Colors.grey.withOpacity(0.5),
       textTheme: TextTheme(
-        headline6: _getTextStyleByColor(Colors.black),
-        subtitle2: _getTextStyleByColor(Colors.black),
-        bodyText1: _getTextStyleByColor(Colors.black),
-        bodyText2: _getTextStyleByColor(Colors.black),
-        headline1: _getTextStyleByColor(Colors.black),
-        headline2: _getTextStyleByColor(Colors.black87),
-        headline3: _getTextStyleByColor(Colors.black87),
-        headline4: _getTextStyleByColor(Colors.black87),
-        headline5: _getTextStyleByColor(Colors.black87),
-        caption: _getTextStyleByColor(const Color(0xff808080)),
-        subtitle1: const TextStyle(
+        titleLarge: _getTextStyleByColor(Colors.black),
+        titleSmall: _getTextStyleByColor(Colors.black),
+        bodyLarge: _getTextStyleByColor(Colors.black),
+        bodyMedium: _getTextStyleByColor(Colors.black),
+        displayLarge: _getTextStyleByColor(Colors.black),
+        displayMedium: _getTextStyleByColor(Colors.black87),
+        displaySmall: _getTextStyleByColor(Colors.black87),
+        headlineMedium: _getTextStyleByColor(Colors.black87),
+        headlineSmall: _getTextStyleByColor(Colors.black87),
+        bodySmall: _getTextStyleByColor(const Color(0xff808080)),
+        titleMedium: const TextStyle(
           fontFamily: 'Cabin',
           color: Color(0xff808080),
         ),
@@ -57,19 +55,20 @@ class CsrDesign {
         ),
       ),
       primaryTextTheme: TextTheme(
-        caption: const TextStyle(color: primaryColor),
-        headline1: _getTextStyleByColor(primaryColor),
-        headline2: _getTextStyleByColor(primaryColor),
-        headline3: _getTextStyleByColor(primaryColor),
-        headline4: _getTextStyleByColor(primaryColor),
-        headline5: _getTextStyleByColor(primaryColor),
-        headline6: _getTextStyleByColor(primaryColor),
-        subtitle2: _getTextStyleByColor(primaryColor),
-        subtitle1: _getTextStyleByColor(primaryColor),
-        bodyText1: _getTextStyleByColor(primaryColor),
-        bodyText2: _getTextStyleByColor(primaryColor),
+        bodySmall: const TextStyle(color: primaryColor),
+        displayLarge: _getTextStyleByColor(primaryColor),
+        displayMedium: _getTextStyleByColor(primaryColor),
+        displaySmall: _getTextStyleByColor(primaryColor),
+        headlineMedium: _getTextStyleByColor(primaryColor),
+        headlineSmall: _getTextStyleByColor(primaryColor),
+        titleLarge: _getTextStyleByColor(primaryColor),
+        titleSmall: _getTextStyleByColor(primaryColor),
+        titleMedium: _getTextStyleByColor(primaryColor),
+        bodyLarge: _getTextStyleByColor(primaryColor),
+        bodyMedium: _getTextStyleByColor(primaryColor),
       ),
       colorScheme: light.colorScheme.copyWith(
+        error: Colors.red,
         onPrimary: Colors.black,
         secondary: accentColor,
         primary: primaryColor,
@@ -91,21 +90,33 @@ class CsrDesign {
       canvasColor: Colors.transparent,
       cardColor: const Color(0xff252525),
       shadowColor: const Color(0xff303030),
-      backgroundColor: const Color.fromARGB(255, 31, 31, 31),
       scaffoldBackgroundColor: backgroundColor,
       dialogBackgroundColor: backgroundColor,
       textTheme: TextTheme(
-        caption: _getTextStyleByColor(accentTextColor),
-        headline1: _getTextStyleByColor(darkThemeTextColor),
-        headline2: _getTextStyleByColor(darkThemeTextColor),
-        headline3: _getTextStyleByColor(darkThemeTextColor),
-        headline4: _getTextStyleByColor(darkThemeTextColor),
-        headline5: _getTextStyleByColor(darkThemeTextColor),
-        headline6: _getTextStyleByColor(darkThemeTextColor),
-        subtitle1: _getTextStyleByColor(darkThemeTextColor),
-        subtitle2: _getTextStyleByColor(darkThemeTextColor),
-        bodyText1: _getTextStyleByColor(darkThemeTextColor),
-        bodyText2: _getTextStyleByColor(darkThemeTextColor),
+        titleLarge: _getTextStyleByColor(darkThemeTextColor),
+        titleSmall: _getTextStyleByColor(darkThemeTextColor),
+        bodyLarge: _getTextStyleByColor(darkThemeTextColor),
+        bodyMedium: _getTextStyleByColor(darkThemeTextColor),
+        displayLarge: _getTextStyleByColor(darkThemeTextColor),
+        displayMedium: _getTextStyleByColor(darkThemeTextColor),
+        displaySmall: _getTextStyleByColor(darkThemeTextColor),
+        headlineMedium: _getTextStyleByColor(darkThemeTextColor),
+        headlineSmall: _getTextStyleByColor(darkThemeTextColor),
+        bodySmall: _getTextStyleByColor(accentTextColor),
+        titleMedium: _getTextStyleByColor(darkThemeTextColor),
+      ),
+      primaryTextTheme: TextTheme(
+        bodySmall: const TextStyle(color: darkThemeTextColor),
+        displayLarge: _getTextStyleByColor(darkThemeTextColor),
+        displayMedium: _getTextStyleByColor(darkThemeTextColor),
+        displaySmall: _getTextStyleByColor(darkThemeTextColor),
+        headlineMedium: _getTextStyleByColor(darkThemeTextColor),
+        headlineSmall: _getTextStyleByColor(darkThemeTextColor),
+        titleLarge: _getTextStyleByColor(darkThemeTextColor),
+        titleSmall: _getTextStyleByColor(darkThemeTextColor),
+        titleMedium: _getTextStyleByColor(darkThemeTextColor),
+        bodyLarge: _getTextStyleByColor(darkThemeTextColor),
+        bodyMedium: _getTextStyleByColor(darkThemeTextColor),
       ),
       primaryColorDark: Colors.white,
       iconTheme: const IconThemeData(color: primaryColor),
@@ -348,10 +359,10 @@ Widget dateBuilder(BuildContext context, Widget? child) {
         colorScheme: ColorScheme.dark(
           primary: theme.primaryColor,
           onPrimary: Colors.white,
-          surface: theme.backgroundColor,
+          surface: theme.colorScheme.background,
           onSurface: Colors.white,
         ),
-        canvasColor: theme.backgroundColor,
+        canvasColor: theme.colorScheme.background,
         hintColor: Colors.white,
       ),
       child: child!,
@@ -448,7 +459,7 @@ class H4 extends StatelessWidget {
   final List<Shadow>? shadows;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline4;
+    final style = Theme.of(context).textTheme.headlineMedium;
     return style!.copyWith(
       color: color,
       shadows: shadows,
@@ -472,7 +483,7 @@ class H4 extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline4!,
+      style: Theme.of(context).textTheme.headlineMedium!,
     );
   }
 }
@@ -500,7 +511,7 @@ class H1 extends StatelessWidget {
   final List<Shadow>? shadows;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline1;
+    final style = Theme.of(context).textTheme.displayLarge;
     return style!.copyWith(
       color: color,
       shadows: shadows,
@@ -524,7 +535,7 @@ class H1 extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline1!,
+      style: Theme.of(context).textTheme.displayLarge!,
     );
   }
 }
@@ -552,7 +563,7 @@ class H2 extends StatelessWidget {
   final List<Shadow>? shadows;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline2;
+    final style = Theme.of(context).textTheme.displayMedium;
     return style!.copyWith(
       color: color,
       shadows: shadows,
@@ -576,7 +587,7 @@ class H2 extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline2!,
+      style: Theme.of(context).textTheme.displayMedium!,
     );
   }
 }
@@ -604,7 +615,7 @@ class H3 extends StatelessWidget {
   final List<Shadow>? shadows;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline3;
+    final style = Theme.of(context).textTheme.displaySmall;
     return style!.copyWith(
       color: color,
       shadows: shadows,
@@ -628,7 +639,7 @@ class H3 extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline3!,
+      style: Theme.of(context).textTheme.displaySmall!,
     );
   }
 }
@@ -656,7 +667,7 @@ class H5 extends StatelessWidget {
   final List<Shadow>? shadows;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline5;
+    final style = Theme.of(context).textTheme.headlineSmall;
     return style!.copyWith(
       color: color,
       shadows: shadows,
@@ -680,7 +691,7 @@ class H5 extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline5!,
+      style: Theme.of(context).textTheme.headlineSmall!,
     );
   }
 }
@@ -708,7 +719,7 @@ class Subtitle1 extends StatelessWidget {
   final TextOverflow? overflow;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.subtitle1;
+    final style = Theme.of(context).textTheme.titleMedium;
 
     return style!.copyWith(
       color: color,
@@ -733,7 +744,7 @@ class Subtitle1 extends StatelessWidget {
       overflow: overflow,
       maxLines: maxLines,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.subtitle1!,
+      style: Theme.of(context).textTheme.titleMedium!,
     );
   }
 }
@@ -761,7 +772,7 @@ class Subtitle2 extends StatelessWidget {
   final TextOverflow? overflow;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.subtitle2;
+    final style = Theme.of(context).textTheme.titleSmall;
 
     return style!.copyWith(
       color: color,
@@ -779,7 +790,7 @@ class Subtitle2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return _CustomText(
       text: text,
-      style: Theme.of(context).textTheme.subtitle2!,
+      style: Theme.of(context).textTheme.titleSmall!,
       bold: bold,
       color: color,
       center: center,
@@ -814,7 +825,7 @@ class Caption extends StatelessWidget {
   final TextOverflow? overflow;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.caption;
+    final style = Theme.of(context).textTheme.bodySmall;
 
     return style!.copyWith(
       color: color,
@@ -839,7 +850,7 @@ class Caption extends StatelessWidget {
       maxLines: maxLines,
       overflow: overflow,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.caption!,
+      style: Theme.of(context).textTheme.bodySmall!,
     );
   }
 }
@@ -867,7 +878,7 @@ class H6 extends StatelessWidget {
   final TextOverflow? overflow;
 
   TextStyle getTextStyle(BuildContext context) {
-    final style = Theme.of(context).textTheme.headline6;
+    final style = Theme.of(context).textTheme.titleLarge;
 
     return style!.copyWith(
       color: color,
@@ -892,7 +903,7 @@ class H6 extends StatelessWidget {
       overflow: overflow,
       maxLines: maxLines,
       scaleFactor: scaleFactor,
-      style: Theme.of(context).textTheme.headline6!,
+      style: Theme.of(context).textTheme.titleLarge!,
     );
   }
 }
